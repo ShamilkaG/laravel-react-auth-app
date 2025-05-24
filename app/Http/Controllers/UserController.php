@@ -30,7 +30,8 @@ class UserController extends Controller
 
         if ($this->isValidateUserCredentials($request->all(),$user)){
             return response()->json([
-                'message' => 'User found',
+//                'message' => 'User found',
+                'user_id' => $user->id,
                 'user_token'=> $user->createToken('testToken',['server:admin'])->plainTextToken,
             ]);
         }

@@ -9,3 +9,7 @@ export interface ISignInFormProp {
     handleInputField: (event: React.ChangeEvent<HTMLInputElement>) => void // void not return , {} - have a return must be
     handleSubmit: (event: React.FormEvent) => Promise<void>
 }
+
+export interface IUserSignInPayload {
+    signInDetails: ISignInState;
+}
