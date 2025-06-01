@@ -10,6 +10,7 @@ interface IAuthPayload {
 const initialState: IAuthInitialState = {
     token: "",
     user_id: "",
+    user_role:0,
     isAuthenticated: false,
     isLoading: false,
 };
@@ -42,8 +43,10 @@ const setPayloadValuesUntoStore = (state: IAuthInitialState, payload: IAuthPaylo
     if(!payload){
         return
     }
+
     state.token = payload.user_token;
     state.user_id = payload.user_id;
+    state.user_role = payload.userRole;
     state.isAuthenticated = true;
     state.isLoading = false;
 }

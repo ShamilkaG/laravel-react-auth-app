@@ -6,6 +6,12 @@ const AppRoutes: React.FC = () => {
     return (
         <Routes>
             <Route path="/" element={<SignIn />} />
+            <Route
+                path="/dashboard"
+                element={
+                <div>Dashboard</div>
+            }
+            />
         </Routes>
     );
 };
