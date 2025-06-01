@@ -1,6 +1,8 @@
 <?php
 
 
+namespace Tests\Feature\User;
+
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
@@ -9,6 +11,7 @@ use Tests\TestCase;
 final class UserSignInTest extends TestCase
 {
     use RefreshDatabase;
+
     public function test_user_can_sign_in_with_correct_user_credentials()
     {
         $user = User::factory()->create([
