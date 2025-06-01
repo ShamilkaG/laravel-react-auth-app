@@ -1,11 +1,8 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { IAuthInitialState } from "../../types/slices/AuthSlice";
+import { createSlice } from "@reduxjs/toolkit";
+import type {IAuthInitialState, IAuthPayload} from "../../types/slices/AuthSlice";
 import { UserSignIn } from "../../api/auth/UserSignIn.ts";
 
-interface IAuthPayload {
-    user_id: string;
-    user_token: string;
-}
+
 
 const initialState: IAuthInitialState = {
     token: "",

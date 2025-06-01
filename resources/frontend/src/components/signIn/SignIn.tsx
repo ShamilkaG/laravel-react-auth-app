@@ -1,57 +1,50 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import SignInForm from "./SignInForm.tsx";
 import type {ISignInState} from "../../utilities/types/signIn/SignIn";
-import {UserSignIn} from "../../utilities/api/auth/UserSignIn.ts";
-import {useDispatch} from "react-redux";
-import type {AppDispatch} from "../../store.tsx";
+import { UserSignIn } from "../../utilities/api/auth/UserSignIn.ts";
+import { useDispatch, useSelector } from "react-redux";
+import type {AppDispatch, RootState} from "../../store.tsx";
+import { useNavigate } from "react-router";
 
-// interface ISignInState {
-//     email: string,
-//     password: string,
-// }
 const SignIn: React.FC = () => {
-    const [signInDetails, setSignInDetails] = useState<ISignInState>({
-        email: '',
-        password: '',
-    })
+    const [signDetails, setSignDetails] = useState<ISignInState>({
+        email: "",
+        password: "",
+    });
+    const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
+    const { user_role, isAuthenticated } = useSelector(
+        (state: RootState) => state.auth,
+    );
 
-    const dispatch = useDispatch<AppDispatch>()
+    useEffect(() => {
+        if (isAuthenticated && user_role === 1) {
+            navigate("/dashboard");
+        }
+    }, [user_role, isAuthenticated, navigate]);
 
-    // const handleInputField = (event) => { //normal way
-    const handleInputField = (event: React.ChangeEvent<HTMLInputElement>) :void => { // purpose of using type script is identify
-        // correct details such as type of html input field, data type of the input, return type is void(no return)
-        const {name,value} = event.target
+    const handleInputField = (
+        event: React.ChangeEvent<HTMLInputElement>,
+    ): void => {
+        const { name, value } = event.target;
 
-        // console.log(name,value)
-        setSignInDetails((prevState) =>({
+        setSignDetails((prevState) => ({
             ...prevState,
-            [name]: value
-        }))
-    }
-    // console.log(signInDetails)
-    const handleSubmit = async (event: React.FormEvent): Promise<void> => {
-        event.preventDefault()
-        // console.log('sss')
-        // console.log(signInDetails)
+            [name]: value,
+        }));
+    };
 
-        // definately first must be call following api - specially login form
-       // return await axios.get('/sanctum/csrf-cookie').then(res => {
-       //      const response =  axios.post('api/sign-in',signInDetails)
-       //      // if endpoint will fail
-       //      console.log(response)
-       //  });
-        // endpoint call
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault();
 
-       await dispatch(UserSignIn({signInDetails}))
-
-    }
+        await dispatch(UserSignIn({ signDetails }));
+    };
 
     return (
-        // <div>
-        //     Sign In Component
-        // </div>
-        <SignInForm handleInputField={handleInputField}
-                    handleSubmit={handleSubmit}/>
+        <SignInForm
+            handleInputField={handleInputField}
+            handleSubmit={handleSubmit}
+        />
     );
 };
 
