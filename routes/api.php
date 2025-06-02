@@ -10,3 +10,5 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::post('/sign-in', [UserController::class, 'userSignIn']);
+
+Route::get('/get-products-details', function () {});

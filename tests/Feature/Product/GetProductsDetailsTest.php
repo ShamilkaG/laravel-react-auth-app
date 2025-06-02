@@ -18,7 +18,7 @@ final class GetProductsDetailsTest extends TestCase
 
         $response = $this->get('api/get-products-details');
 
-        $response->assertStatus(200);
+        $response->assertStatus(200); //1
         $response->assertJsonStructure([
             'status',
             'product_details'
