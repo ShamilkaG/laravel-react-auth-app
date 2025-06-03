@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard.tsx";
 import Navbar from "../common/navbar/Navbar.tsx";
 import axios from "axios";
-import { IProductDetails } from "../../utilities/types/product/product";
+import type {IProductDetails} from "../../utilities/types/product/product";
 const Products: React.FC = () => {
     const [productDetails, setProductDetails] = useState<IProductDetails[]>([]);
 

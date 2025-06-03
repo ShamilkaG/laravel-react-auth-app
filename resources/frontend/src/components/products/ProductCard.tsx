@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import React from "react";
-import { IProductDetails } from "../../utilities/types/product/product";
+import type {IProductDetails} from "../../utilities/types/product/product";
 import { addToCart } from "../../utilities/slices/product/CartSlice.tsx";
 
 interface IProductCardProp {
