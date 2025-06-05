@@ -46,5 +46,7 @@ const setPayloadValuesUntoStore = (state: IAuthInitialState, payload: IAuthPaylo
     state.user_role = payload.userRole;
     state.isAuthenticated = true;
     state.isLoading = false;
+
+    localStorage.setItem('token', payload.user_token);
 }
 export default authSlice.reducer;

@@ -6,3 +6,15 @@ export interface IProductDetails {
     product_qty: number;
     quantity: number
 }
+
+export interface IShoppingCartItemProp {
+    item: IProductDetails;
+}
+
+export interface CartItem extends IProductDetails {
+    quantity: number;
+}
+
+export interface CartState {
+    cartItems: CartItem[];
+}
