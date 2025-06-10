@@ -43,7 +43,7 @@ const setPayloadValuesUntoStore = (state: IAuthInitialState, payload: IAuthPaylo
 
     state.token = payload.user_token;
     state.user_id = payload.user_id;
-    state.user_role = payload.userRole;
+    state.user_role = payload.user_role;
     state.isAuthenticated = true;
     state.isLoading = false;
 

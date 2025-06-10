@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/sign-in', [UserController::class, 'userSignIn']);
 //Route::get('/get-products-details', [ProductController::class, 'getProductsDetails']);
 Route::middleware(['auth:sanctum', AdminUserMiddleware::class])->group(function () {
-    Route::get('/get-products-details', [ProductController::class, 'getProductsDetails']);
+    Route::get('/get-products-details', [ProductController::class, 'getProductDetails']);
 });
 
 

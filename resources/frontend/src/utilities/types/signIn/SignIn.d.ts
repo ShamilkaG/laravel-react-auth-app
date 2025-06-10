@@ -11,5 +11,5 @@ export interface ISignInFormProp {
 }
 
 export interface IUserSignInPayload {
-    signInDetails: ISignInState;
+    signDetails: ISignInState;
 }
